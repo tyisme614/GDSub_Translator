@@ -1,0 +1,19 @@
+{
+  "name": "gdsub_translator",
+  "version": "0.0.1",
+  "description": "automatically translate english to chinese by Google Translator",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "gdsub",
+    "translator"
+  ],
+  "author": "yuan",
+  "license": "ISC",
+  "dependencies": {
+    "@google-cloud/translate": "^1.1.0",
+    "linebyline": "^1.3.0"
+  }
+}
