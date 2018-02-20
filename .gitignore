@@ -1,0 +1,4 @@
+#ignore downloaded resources from npm
+node_modules/
+output/
+.DS_Store
