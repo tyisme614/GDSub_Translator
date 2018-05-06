@@ -51,12 +51,12 @@ var count = 0;
 // 		});
 // 	}
 // });
-
+console.log('reading source file');
 process.on('line', (data, lineCount, byteCount) =>{
 	console.log(data);
 
-});
-process.on('close', (err) => {
+})
+.on('close', (err) => {
 	if(err)
 		console.log(err);
 });
