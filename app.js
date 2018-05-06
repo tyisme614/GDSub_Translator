@@ -12,8 +12,8 @@ var target_lang = 'zh';
 // var file = 'test.srt';
 // var target = 'output.txt';
 
-var src = lbl('src.txt');
-var process = lbl(src);
+var process = lbl(__dirname + '/src.txt');
+//var process = lbl(src);
 var buffer = '';
 var count = 0;
 //creating output file
@@ -52,9 +52,13 @@ var count = 0;
 // 	}
 // });
 console.log('reading source file');
-process.on('line', (data, lineCount, byteCount) =>{
+process.on('line', function(data, lineCount, byteCount){
 	console.log(data);
+	console.log(lineCount);
 
+})
+.on('error', (err) => {
+	console.log(err);
 })
 .on('close', (err) => {
 	if(err)
