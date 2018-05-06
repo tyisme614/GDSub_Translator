@@ -12,9 +12,10 @@ var target_lang = 'zh';
 // var file = 'test.srt';
 // var target = 'output.txt';
 
-var src = lbl('src.txt');
-var process = lbl(src);
-var buffer = [];
+
+var process = lbl(__dirname + '/src.txt');
+//var process = lbl(src);
+var buffer = '';
 
 var count = 0;
 //creating output file
@@ -53,10 +54,17 @@ var count = 0;
 // 	}
 // });
 console.log('reading source file');
-process.on('line', (data, lineCount, byteCount) =>{
+process.on('line', function(data, lineCount, byteCount){
 	console.log(data);
+<<<<<<< HEAD
 	buffer = data.split(' ');
+=======
+	console.log(lineCount);
+>>>>>>> 0d0f410fc896b0a604e0490ab3b6ad858c03dd22
 
+})
+.on('error', (err) => {
+	console.log(err);
 })
 .on('close', (err) => {
 	if(err)
