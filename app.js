@@ -28,7 +28,7 @@ stateEmitter.on('next', function(){
 	}
 });
 
-var process = lbl(__dirname + '/src.txt');
+var process = lbl(__dirname + '/sentences.txt');
 //var process = lbl(src);
 var buffer = [];
 var txt_arr = '';
@@ -71,7 +71,10 @@ var count = 0;
 console.log('reading source file');
 process.on('line', function(data, lineCount, byteCount){
 	console.log(data);
-	buffer = data.split(' ');
+	//word by word
+	// buffer = data.split(' ');
+	//sentence by sentence
+	buffer.put(data);
 
 
 })
@@ -84,7 +87,10 @@ process.on('line', function(data, lineCount, byteCount){
 	console.log('starting translating...');
 	// traverseBuffer(buffer);
 	index = 0;
-	txt_arr += buffer[index] + ' ';
+	//word by word
+	// txt_arr += buffer[index] + ' ';
+	//sentence by sentence
+	txt_arr = buffer[index];
 	translateSubtitle(txt_arr);
 });
 
@@ -98,7 +104,7 @@ function translateSubtitle(buffer){
 	translator.translate(buffer, target_lang)
 		.then(function(results, lineNum){
 			var translation = results[0];
-			console.log('source:' + buffer);
+			console.log('source:' + buffer[index]);
 			console.log('translation:' + translation);
 			stateEmitter.emit('next');
 			//console.log('verbose:' + results);
