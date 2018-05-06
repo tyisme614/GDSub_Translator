@@ -56,11 +56,8 @@ var count = 0;
 console.log('reading source file');
 process.on('line', function(data, lineCount, byteCount){
 	console.log(data);
-<<<<<<< HEAD
 	buffer = data.split(' ');
-=======
-	console.log(lineCount);
->>>>>>> 0d0f410fc896b0a604e0490ab3b6ad858c03dd22
+
 
 })
 .on('error', (err) => {
