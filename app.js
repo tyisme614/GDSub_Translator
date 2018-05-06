@@ -59,6 +59,7 @@ process.on('line', (data, lineCount, byteCount) =>{
 .on('close', (err) => {
 	if(err)
 		console.log(err);
+	console.log('done.');
 });
 
 
