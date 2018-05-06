@@ -12,11 +12,25 @@ var target_lang = 'zh';
 // var file = 'test.srt';
 // var target = 'output.txt';
 
+const EventEmitter = require('events');
+class customEventEmitter extends EventEmitter{};
+const stateEmitter = new customEventEmitter();
+var index =0;
+stateEmitter.on('next', function(){
+	index++;
+	if(index < buffer.length){
+		console.log('next word: ' + buffer[index]);
+		txt_arr += buffer[index] + ' ';
+		translateSubtitle(txt_arr);
+	}else{
+		console.log('translation done.');
+	}
+});
 
 var process = lbl(__dirname + '/src.txt');
 //var process = lbl(src);
-var buffer = '';
-
+var buffer = [];
+var txt_arr = '';
 var count = 0;
 //creating output file
 // console.log('creating output file...');
@@ -66,8 +80,11 @@ process.on('line', function(data, lineCount, byteCount){
 .on('close', (err) => {
 	if(err)
 		console.log(err);
-	console.log('done.');
-	traverseBuffer(buffer);
+	console.log('starting translating...');
+	// traverseBuffer(buffer);
+	index = 0;
+	txt_arr += buffer[index] + ' ';
+	translateSubtitle(txt_arr);
 });
 
 function traverseBuffer(b){
@@ -80,7 +97,9 @@ function translateSubtitle(buffer){
 	translator.translate(buffer, target_lang)
 		.then(function(results, lineNum){
 			var translation = results[0];
+			console.log('source:' + buffer);
 			console.log('translation:' + translation);
+			stateEmitter.emit('next');
 			//console.log('verbose:' + results);
 		});
 
