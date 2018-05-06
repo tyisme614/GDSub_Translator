@@ -74,7 +74,7 @@ process.on('line', function(data, lineCount, byteCount){
 	//word by word
 	// buffer = data.split(' ');
 	//sentence by sentence
-	buffer.put(data);
+	buffer.push(data);
 
 
 })
