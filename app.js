@@ -14,7 +14,8 @@ var target_lang = 'zh';
 
 var src = lbl('src.txt');
 var process = lbl(src);
-var buffer = '';
+var buffer = [];
+
 var count = 0;
 //creating output file
 // console.log('creating output file...');
@@ -54,14 +55,21 @@ var count = 0;
 console.log('reading source file');
 process.on('line', (data, lineCount, byteCount) =>{
 	console.log(data);
+	buffer = data.split(' ');
 
 })
 .on('close', (err) => {
 	if(err)
 		console.log(err);
 	console.log('done.');
+	traverseBuffer(buffer);
 });
 
+function traverseBuffer(b){
+	for(var i=0; i<b.length; i++){
+		console.log(b[i]);
+	}
+}
 
 function translateSubtitle(buffer){
 	translator.translate(buffer, target_lang)
