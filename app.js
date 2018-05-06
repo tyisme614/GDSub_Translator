@@ -4,7 +4,8 @@ var fs = require('fs');
 var google_translate = require('@google-cloud/translate');
 var projectID = 'GLocalizationProjects';
 var translator = new google_translate({
-	projectId: projectID
+	projectId: projectID,
+	keyFilename: '/home/yuan/auth/GLocalizationProjects-4f795dcb895a.json'
 });
 var target_lang = 'zh';
 
