@@ -17,7 +17,7 @@ var translator = new google_translate({
 var target_lang = 'zh';
 
 var speech = new google_speech.SpeechClient();
-var src_audio = 'test.pcm';
+var src_audio = 'pcm16_test.wav';
 //loading audio file
 console.log('loading audio file');
 var audio_base64 = fs.readFileSync(src_audio).toString('base64');
