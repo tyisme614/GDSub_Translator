@@ -28,7 +28,8 @@ stateEmitter.on('next', function(){
 	}
 });
 
-var process = lbl(__dirname + '/sentences.txt');
+//var process = lbl(__dirname + '/sentences.txt');
+var process = lbl(__dirname + '/src.txt');
 //var process = lbl(src);
 var buffer = [];
 var txt_arr = '';
@@ -72,9 +73,9 @@ console.log('reading source file');
 process.on('line', function(data, lineCount, byteCount){
 	console.log(data);
 	//word by word
-	// buffer = data.split(' ');
+	 buffer = data.split(' ');
 	//sentence by sentence
-	buffer.push(data);
+	//buffer.push(data);
 
 
 })
@@ -88,9 +89,9 @@ process.on('line', function(data, lineCount, byteCount){
 	// traverseBuffer(buffer);
 	index = 0;
 	//word by word
-	// txt_arr += buffer[index] + ' ';
+	 txt_arr += buffer[index] + ' ';
 	//sentence by sentence
-	txt_arr = buffer[index];
+	//txt_arr = buffer[index];
 	translateSubtitle(txt_arr);
 });
 
