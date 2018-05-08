@@ -38,7 +38,7 @@ const request = {
  
 // Detects speech in the audio file
 console.log('start recognizing speech');
-client
+speech
   .recognize(request)
   .then(data => {
     const response = data[0];
